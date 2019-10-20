@@ -1,0 +1,77 @@
+
+main start!
+
+BSP_IntDisAll() done!
+
+OSInit() done!
+
+App_TaskStart() start!
+
+BSP_Init() done_1!
+
+OS_CPU_SysTickInit() done!
+Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    37
+Led3
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    23
+Led1Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    27
+Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    50
+Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    49
+Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    49
+Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    50
+Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    49
+Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    49
+Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    50
+Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    49
+Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    49
+Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    50
+Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    49
+Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    49
+Led1Led3Led1Led2Led1Led1Led2Led3Led1Led1Led2Led1Led3Led1Led2Led1Led1Led2Led3
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    50
+Led1Led1Led2Led1Led3

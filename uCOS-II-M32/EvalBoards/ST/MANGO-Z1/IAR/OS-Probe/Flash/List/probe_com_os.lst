@@ -1,0 +1,333 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.50.3.4676/W32 for ARM      11/Mar/2013  20:18:51 #
+# Copyright 1999-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communicatio #
+#                    n\Generic\OS\uCOS-II\probe_com_os.c                      #
+#    Command line =  C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communicatio #
+#                    n\Generic\OS\uCOS-II\probe_com_os.c -lCN                 #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\List\ -o C:\BookSrc_CM3_IAR\Software\EvalB #
+#                    oards\ST\MANGO-Z1\IAR\OS-Probe\Flash\Obj\ --no_cse       #
+#                    --no_unroll --no_inline --no_code_motion --no_tbaa       #
+#                    --no_clustering --no_scheduling --debug --endian=little  #
+#                    --cpu=Cortex-M3 -e --fpu=None --dlib_config "C:\Program  #
+#                    Files\IAR Systems\Embedded Workbench                     #
+#                    6.5\arm\INC\c\DLib_Config_Normal.h" -I                   #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MA #
+#                    NGO-Z1\IAR\OS-Probe\..\BSP\ -I                           #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\CPU\ST\STM32\inc\ -I              #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-CPU\ -I                        #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-CPU\ARM-Cortex-M3\IAR\ -I      #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-LCD\Source\ -I                 #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-LIB\ -I                        #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M3\Gener #
+#                    ic\IAR\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MAN #
+#                    GO-Z1\IAR\OS-Probe\..\..\..\..\..\uCOS-II\Source\ -I     #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-Probe\Target\Communication\Gen #
+#                    eric\RS-232\Source\ -I C:\BookSrc_CM3_IAR\Software\EvalB #
+#                    oards\ST\MANGO-Z1\IAR\OS-Probe\..\..\..\..\..\uC-Probe\T #
+#                    arget\Communication\Generic\RS-232\Ports\ST\STM32\ -I    #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-Probe\Target\Communication\Gen #
+#                    eric\Source\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\S #
+#                    T\MANGO-Z1\IAR\OS-Probe\..\..\..\..\..\uC-Probe\Target\P #
+#                    lugins\uCOS-II\ -Ol --use_c++_inline                     #
+#    List file    =  C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\List\probe_com_os.lst                      #
+#    Object file  =  C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\Obj\probe_com_os.o                         #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communication\Generic\OS\uCOS-II\probe_com_os.c
+      1          /*
+      2          *********************************************************************************************************
+      3          *                                       uC/Probe Communication
+      4          *
+      5          *                         (c) Copyright 2007-2008; Micrium, Inc.; Weston, FL
+      6          *
+      7          *               All rights reserved.  Protected by international copyright laws.
+      8          *               Knowledge of the source code may NOT be used to develop a similar product.
+      9          *               Please help us continue to provide the Embedded community with the finest
+     10          *               software available.  Your honesty is greatly appreciated.
+     11          *********************************************************************************************************
+     12          */
+     13          
+     14          /*
+     15          *********************************************************************************************************
+     16          *
+     17          *                                       COMMUNICATION: GENERIC
+     18          *                                        Micrium uC/OS-II PORT
+     19          *
+     20          * Filename      : probe_com_os.c
+     21          * Version       : V2.20
+     22          * Programmer(s) : BAN
+     23          *********************************************************************************************************
+     24          * Note(s)       : (1) This file is the uC/OS-II layer for the uC/Probe Generic Communication Module.
+     25          *********************************************************************************************************
+     26          */
+     27          
+     28          
+     29          /*
+     30          *********************************************************************************************************
+     31          *                                            INCLUDE FILES
+     32          *********************************************************************************************************
+     33          */
+     34          
+     35          #include  <probe_com.h>
+     36          #include  <ucos_ii.h>
+     37          
+     38          
+     39          /*
+     40          *********************************************************************************************************
+     41          *                                            LOCAL DEFINES
+     42          *********************************************************************************************************
+     43          */
+     44          
+     45          
+     46          /*
+     47          *********************************************************************************************************
+     48          *                                           LOCAL CONSTANTS
+     49          *********************************************************************************************************
+     50          */
+     51          
+     52          
+     53          /*
+     54          *********************************************************************************************************
+     55          *                                          LOCAL DATA TYPES
+     56          *********************************************************************************************************
+     57          */
+     58          
+     59          
+     60          /*
+     61          *********************************************************************************************************
+     62          *                                            LOCAL TABLES
+     63          *********************************************************************************************************
+     64          */
+     65          
+     66          
+     67          /*
+     68          *********************************************************************************************************
+     69          *                                       LOCAL GLOBAL VARIABLES
+     70          *********************************************************************************************************
+     71          */
+     72          
+     73          #if ((PROBE_COM_CFG_TERMINAL_REQ_EN == DEF_ENABLED) && (OS_SEM_EN > 0))
+
+   \                                 In section .bss, align 4
+     74          static  OS_EVENT  *ProbeCom_OS_TerminalSem;
+   \                     ProbeCom_OS_TerminalSem:
+   \   00000000                      DS8 4
+     75          #endif
+     76          
+     77          
+     78          /*
+     79          *********************************************************************************************************
+     80          *                                      LOCAL FUNCTION PROTOTYPES
+     81          *********************************************************************************************************
+     82          */
+     83          
+     84          
+     85          /*
+     86          *********************************************************************************************************
+     87          *                                     LOCAL CONFIGURATION ERRORS
+     88          *********************************************************************************************************
+     89          */
+     90          
+     91          #if ((PROBE_COM_CFG_TERMINAL_REQ_EN == DEF_ENABLED) && (OS_SEM_EN == 0))
+     92          #error  "If Probe terminal requests are enabled, then semaphores MUST be enabled."
+     93          #endif
+     94          
+     95          
+     96          /*
+     97          *********************************************************************************************************
+     98          *                                         ProbeCom_OS_Init()
+     99          *
+    100          * Description : Create a semaphore for terminal output completion notification.
+    101          *
+    102          * Argument(s) : none.
+    103          *
+    104          * Return(s)   : none.
+    105          *
+    106          * Caller(s)   : ProbeCom_Init().
+    107          *
+    108          * Note(s)     : none.
+    109          *********************************************************************************************************
+    110          */
+    111          
+    112          #if (PROBE_COM_CFG_TERMINAL_REQ_EN == DEF_ENABLED)
+
+   \                                 In section .text, align 2, keep-with-next
+    113          void  ProbeCom_OS_Init (void)
+    114          {
+   \                     ProbeCom_OS_Init:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    115          #if (OS_EVENT_NAME_SIZE > 10) && (OS_SEM_EN > 0)
+    116              CPU_INT08U  err;
+    117          #endif
+    118          
+    119          
+    120          #if   (OS_SEM_EN > 0)
+    121              ProbeCom_OS_TerminalSem = OSSemCreate(0);
+   \   00000002   0x2000             MOVS     R0,#+0
+   \   00000004   0x.... 0x....      BL       OSSemCreate
+   \   00000008   0x....             LDR.N    R1,??DataTable2
+   \   0000000A   0x6008             STR      R0,[R1, #+0]
+    122          #if   (OS_EVENT_NAME_SIZE > 13)
+    123              OSEventNameSet(ProbeCom_OS_TerminalSem, (CPU_INT08U *)"uC/Probe Term", &err);
+   \   0000000C   0xAA00             ADD      R2,SP,#+0
+   \   0000000E   0x....             LDR.N    R1,??DataTable2_1
+   \   00000010   0x....             LDR.N    R0,??DataTable2
+   \   00000012   0x6800             LDR      R0,[R0, #+0]
+   \   00000014   0x.... 0x....      BL       OSEventNameSet
+    124          #elif (OS_EVENT_NAME_SIZE > 10)
+    125              OSEventNameSet(ProbeCom_OS_TerminalSem, (CPU_INT08U *)"Probe Term", &err);
+    126          #endif
+    127          #endif
+    128          }
+   \   00000018   0xBD01             POP      {R0,PC}          ;; return
+    129          #endif
+    130          
+    131          
+    132          /*
+    133          *********************************************************************************************************
+    134          *                                    ProbeCom_OS_TerminalOutWait()
+    135          *
+    136          * Description : Wait for terminal output to complete.
+    137          *
+    138          * Argument(s) : none.
+    139          *
+    140          * Return(s)   : none.
+    141          *
+    142          * Caller(s)   : ProbeCom_TerminalOut().
+    143          *
+    144          * Note(s)     : none.
+    145          *********************************************************************************************************
+    146          */
+    147          
+    148          #if (PROBE_COM_CFG_TERMINAL_REQ_EN == DEF_ENABLED)
+
+   \                                 In section .text, align 2, keep-with-next
+    149          void  ProbeCom_OS_TerminalOutWait (void)
+    150          {
+   \                     ProbeCom_OS_TerminalOutWait:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    151          #if (OS_SEM_EN > 0)
+    152              INT8U  os_err;
+    153          
+    154          
+    155              OSSemPend(ProbeCom_OS_TerminalSem, 0, &os_err);             /* Wait for output to complete.                         */
+   \   00000002   0xAA00             ADD      R2,SP,#+0
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x....             LDR.N    R0,??DataTable2
+   \   00000008   0x6800             LDR      R0,[R0, #+0]
+   \   0000000A   0x.... 0x....      BL       OSSemPend
+    156          
+    157              (void)os_err;
+    158          #endif
+    159          }
+   \   0000000E   0xBD01             POP      {R0,PC}          ;; return
+    160          #endif
+    161          
+    162          
+    163          /*
+    164          *********************************************************************************************************
+    165          *                                   ProbeCom_OS_TerminalOutSignal()
+    166          *
+    167          * Description : Signal terminal output completion.
+    168          *
+    169          * Argument(s) : none.
+    170          *
+    171          * Return(s)   : none.
+    172          *
+    173          * Caller(s)   : ProbeCom_CmdTerminalOut().
+    174          *
+    175          * Note(s)     : none.
+    176          *********************************************************************************************************
+    177          */
+    178          
+    179          #if (PROBE_COM_CFG_TERMINAL_REQ_EN == DEF_ENABLED)
+
+   \                                 In section .text, align 2, keep-with-next
+    180          void  ProbeCom_OS_TerminalOutSignal (void)
+    181          {
+   \                     ProbeCom_OS_TerminalOutSignal:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    182          #if (OS_SEM_EN > 0)
+    183              OSSemPost(ProbeCom_OS_TerminalSem);                         /* Output has completed.                                 */
+   \   00000002   0x....             LDR.N    R0,??DataTable2
+   \   00000004   0x6800             LDR      R0,[R0, #+0]
+   \   00000006   0x.... 0x....      BL       OSSemPost
+    184          #endif
+    185          }
+   \   0000000A   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     ProbeCom_OS_TerminalSem
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     `?<Constant "uC/Probe Term">`
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "uC/Probe Term">`:
+   \   00000000   0x75 0x43          DC8 "uC/Probe Term"
+   \              0x2F 0x50    
+   \              0x72 0x6F    
+   \              0x62 0x65    
+   \              0x20 0x54    
+   \              0x65 0x72    
+   \              0x6D 0x00    
+   \   0000000E   0x00 0x00          DC8 0, 0
+    186          #endif
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+       8   ProbeCom_OS_Init
+         8   -> OSEventNameSet
+         8   -> OSSemCreate
+       8   ProbeCom_OS_TerminalOutSignal
+         8   -> OSSemPost
+       8   ProbeCom_OS_TerminalOutWait
+         8   -> OSSemPend
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      16  ?<Constant "uC/Probe Term">
+       4  ??DataTable2
+       4  ??DataTable2_1
+      26  ProbeCom_OS_Init
+      12  ProbeCom_OS_TerminalOutSignal
+      16  ProbeCom_OS_TerminalOutWait
+       4  ProbeCom_OS_TerminalSem
+
+ 
+  4 bytes in section .bss
+ 16 bytes in section .rodata
+ 62 bytes in section .text
+ 
+ 62 bytes of CODE  memory
+ 16 bytes of CONST memory
+  4 bytes of DATA  memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,847 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.50.3.4676/W32 for ARM      11/Mar/2013  20:18:24 #
+# Copyright 1999-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communicatio #
+#                    n\Generic\RS-232\Ports\ST\STM32\probe_rs232c.c           #
+#    Command line =  C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communicatio #
+#                    n\Generic\RS-232\Ports\ST\STM32\probe_rs232c.c -lCN      #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\List\ -o C:\BookSrc_CM3_IAR\Software\EvalB #
+#                    oards\ST\MANGO-Z1\IAR\OS-Probe\Flash\Obj\ --no_cse       #
+#                    --no_unroll --no_inline --no_code_motion --no_tbaa       #
+#                    --no_clustering --no_scheduling --debug --endian=little  #
+#                    --cpu=Cortex-M3 -e --fpu=None --dlib_config "C:\Program  #
+#                    Files\IAR Systems\Embedded Workbench                     #
+#                    6.5\arm\INC\c\DLib_Config_Normal.h" -I                   #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MA #
+#                    NGO-Z1\IAR\OS-Probe\..\BSP\ -I                           #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\CPU\ST\STM32\inc\ -I              #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-CPU\ -I                        #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-CPU\ARM-Cortex-M3\IAR\ -I      #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-LCD\Source\ -I                 #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-LIB\ -I                        #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M3\Gener #
+#                    ic\IAR\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MAN #
+#                    GO-Z1\IAR\OS-Probe\..\..\..\..\..\uCOS-II\Source\ -I     #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-Probe\Target\Communication\Gen #
+#                    eric\RS-232\Source\ -I C:\BookSrc_CM3_IAR\Software\EvalB #
+#                    oards\ST\MANGO-Z1\IAR\OS-Probe\..\..\..\..\..\uC-Probe\T #
+#                    arget\Communication\Generic\RS-232\Ports\ST\STM32\ -I    #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-Probe\Target\Communication\Gen #
+#                    eric\Source\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\S #
+#                    T\MANGO-Z1\IAR\OS-Probe\..\..\..\..\..\uC-Probe\Target\P #
+#                    lugins\uCOS-II\ -Ol --use_c++_inline                     #
+#    List file    =  C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\List\probe_rs232c.lst                      #
+#    Object file  =  C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\Obj\probe_rs232c.o                         #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communication\Generic\RS-232\Ports\ST\STM32\probe_rs232c.c
+      1          /*
+      2          *********************************************************************************************************
+      3          *                                       uC/Probe Communication
+      4          *
+      5          *                         (c) Copyright 2007-2008; Micrium, Inc.; Weston, FL
+      6          *
+      7          *               All rights reserved.  Protected by international copyright laws.
+      8          *               Knowledge of the source code may NOT be used to develop a similar product.
+      9          *               Please help us continue to provide the Embedded community with the finest
+     10          *               software available.  Your honesty is greatly appreciated.
+     11          *********************************************************************************************************
+     12          */
+     13          
+     14          /*
+     15          *********************************************************************************************************
+     16          *
+     17          *                                        COMMUNICATION: RS-232
+     18          *
+     19          *                                          PORT FOR ST STM32
+     20          *
+     21          * Filename      : probe_rs232c.c
+     22          * Version       : V2.20
+     23          * Programmer(s) : BAN
+     24          *********************************************************************************************************
+     25          */
+     26          
+     27          
+     28          /*
+     29          *********************************************************************************************************
+     30          *                                            INCLUDE FILES
+     31          *********************************************************************************************************
+     32          */
+     33          
+     34          #include  <probe_rs232.h>
+     35          #include  <includes.h>
+     36          
+     37          
+     38          /*
+     39          *********************************************************************************************************
+     40          *                                               ENABLE
+     41          *
+     42          * Note(s) : (1) See 'probe_rs232.h  ENABLE'.
+     43          *********************************************************************************************************
+     44          */
+     45          
+     46          #if (PROBE_COM_CFG_RS232_EN == DEF_ENABLED)                     /* See Note #1.                                         */
+     47          
+     48          
+     49          /*
+     50          *********************************************************************************************************
+     51          *                                            LOCAL DEFINES
+     52          *********************************************************************************************************
+     53          */
+     54          
+     55          
+     56          /*
+     57          *********************************************************************************************************
+     58          *                                       LOCAL GLOBAL VARIABLES
+     59          *********************************************************************************************************
+     60          */
+     61          
+     62          
+     63          /*
+     64          *********************************************************************************************************
+     65          *                                      LOCAL FUNCTION PROTOTYPES
+     66          *********************************************************************************************************
+     67          */
+     68          
+     69          
+     70          /*
+     71          *********************************************************************************************************
+     72          *                                      LOCAL CONFIGURATION ERRORS
+     73          *********************************************************************************************************
+     74          */
+     75          
+     76          #ifndef    PROBE_RS232_CFG_COMM_SEL
+     77          
+     78            #error  "PROBE_RS232_CFG_COMM_SEL          not #define'd in 'probe_com_cfg.h'"
+     79            #error  "                                  [MUST be  PROBE_RS232_UART_1]     "
+     80            #error  "                                  [     ||  PROBE_RS232_UART_2]     "
+     81            #error  "                                  [     ||  PROBE_RS232_UART_3]     "
+     82          
+     83          #elif     (PROBE_RS232_CFG_COMM_SEL != PROBE_RS232_UART_1) && \
+     84                    (PROBE_RS232_CFG_COMM_SEL != PROBE_RS232_UART_2) && \
+     85                    (PROBE_RS232_CFG_COMM_SEL != PROBE_RS232_UART_3)
+     86          
+     87            #error  "PROBE_RS232_CFG_COMM_SEL    illegally #define'd in 'probe_com_cfg.h'"
+     88            #error  "                                  [MUST be  PROBE_RS232_UART_1]     "
+     89            #error  "                                  [     ||  PROBE_RS232_UART_2]     "
+     90            #error  "                                  [     ||  PROBE_RS232_UART_3]     "
+     91          #endif
+     92          
+     93          #ifndef    PROBE_RS232_UART_1_REMAP
+     94          
+     95            #error  "PROBE_RS232_UART_1_REMAP          not #define'd in 'probe_com_cfg.h'"
+     96            #error  "                                  [MUST be  DEF_TRUE ]              "
+     97            #error  "                                  [     ||  DEF_FALSE]              "
+     98          #endif
+     99          
+    100          #ifndef    PROBE_RS232_UART_2_REMAP
+    101          
+    102            #error  "PROBE_RS232_UART_2_REMAP          not #define'd in 'probe_com_cfg.h'"
+    103            #error  "                                  [MUST be  DEF_TRUE ]              "
+    104            #error  "                                  [     ||  DEF_FALSE]              "
+    105          #endif
+    106          
+    107          #ifndef    PROBE_RS232_UART_3_REMAP_PARTIAL
+    108          
+    109            #error  "PROBE_RS232_UART_3_REMAP_PARTIAL  not #define'd in 'probe_com_cfg.h'"
+    110            #error  "                                  [MUST be  DEF_TRUE ]              "
+    111            #error  "                                  [     ||  DEF_FALSE]              "
+    112          #endif
+    113          
+    114          #ifndef    PROBE_RS232_UART_3_REMAP_FULL
+    115          
+    116            #error  "PROBE_RS232_UART_3_REMAP_FULL     not #define'd in 'probe_com_cfg.h'"
+    117            #error  "                                  [MUST be  DEF_TRUE ]              "
+    118            #error  "                                  [     ||  DEF_FALSE]              "
+    119          #endif
+    120          
+    121          
+    122          /*
+    123          *********************************************************************************************************
+    124          *                                       ProbeRS232_InitTarget()
+    125          *
+    126          * Description : Initialize the UART for Probe communication.
+    127          *
+    128          * Argument(s) : baud_rate       Intended baud rate of the RS-232.
+    129          *
+    130          * Return(s)   : none.
+    131          *
+    132          * Caller(s)   : ProbeRS232_Init().
+    133          *
+    134          * Note(s)     : (1) Though the baud rate used may vary from application to application or target to
+    135          *                   target, other communication settings are constamt.  The hardware must always be
+    136          *                   configured for the following :
+    137          *
+    138          *                   (a) No parity
+    139          *                   (b) One stop bit
+    140          *                   (c) Eight data bits.
+    141          *
+    142          *               (2) Neither receive nor transmit interrupts should be enabled by this function.
+    143          *
+    144          *               (3) The following constants control the GPIO remap for the USART control lines :
+    145          *
+    146          *                        PROBE_RS232_UART_1_REMAP
+    147          *                        PROBE_RS232_UART_2_REMAP
+    148          *                        PROBE_RS232_UART_3_REMAP_PARTIAL
+    149          *                        PROBE_RS232_UART_3_REMAP_FULL
+    150          *
+    151          *                    Though the #error directives in 'LOCAL CONFIGURATION ERRORS' will require that
+    152          *                    all are defined, the value of those bearing on the USART not used will have no
+    153          *                    effect.
+    154          *
+    155          *                (4) PROBE_RS232_UART_3_REMAP_PARTIAL has precedence over PROBE_RS232_UART_3_REMAP_FULL,
+    156          *                    if both are defined to DEF_TRUE.
+    157          *********************************************************************************************************
+    158          */
+    159          
+
+   \                                 In section .text, align 2, keep-with-next
+    160          void  ProbeRS232_InitTarget (CPU_INT32U baud_rate)
+    161          {
+   \                     ProbeRS232_InitTarget:
+   \   00000000   0xB500             PUSH     {LR}
+   \   00000002   0xB087             SUB      SP,SP,#+28
+    162              GPIO_InitTypeDef        gpio_init;
+    163              USART_InitTypeDef       usart_init;
+    164              USART_ClockInitTypeDef  usart_clk_init;
+    165          
+    166          
+    167                                                                          /* ----------------- INIT USART STRUCT ---------------- */
+    168              usart_init.USART_BaudRate            = baud_rate;
+   \   00000004   0x9003             STR      R0,[SP, #+12]
+    169              usart_init.USART_WordLength          = USART_WordLength_8b;
+   \   00000006   0x2000             MOVS     R0,#+0
+   \   00000008   0xF8AD 0x0010      STRH     R0,[SP, #+16]
+    170              usart_init.USART_StopBits            = USART_StopBits_1;
+   \   0000000C   0x2000             MOVS     R0,#+0
+   \   0000000E   0xF8AD 0x0012      STRH     R0,[SP, #+18]
+    171              usart_init.USART_Parity              = USART_Parity_No ;
+   \   00000012   0x2000             MOVS     R0,#+0
+   \   00000014   0xF8AD 0x0014      STRH     R0,[SP, #+20]
+    172              usart_init.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
+   \   00000018   0x2000             MOVS     R0,#+0
+   \   0000001A   0xF8AD 0x0018      STRH     R0,[SP, #+24]
+    173              usart_init.USART_Mode                = USART_Mode_Rx | USART_Mode_Tx;
+   \   0000001E   0x200C             MOVS     R0,#+12
+   \   00000020   0xF8AD 0x0016      STRH     R0,[SP, #+22]
+    174          
+    175          
+    176              usart_clk_init.USART_Clock           = USART_Clock_Disable;
+   \   00000024   0x2000             MOVS     R0,#+0
+   \   00000026   0xF8AD 0x0004      STRH     R0,[SP, #+4]
+    177              usart_clk_init.USART_CPOL            = USART_CPOL_Low;
+   \   0000002A   0x2000             MOVS     R0,#+0
+   \   0000002C   0xF8AD 0x0006      STRH     R0,[SP, #+6]
+    178              usart_clk_init.USART_CPHA            = USART_CPHA_2Edge;
+   \   00000030   0xF44F 0x7000      MOV      R0,#+512
+   \   00000034   0xF8AD 0x0008      STRH     R0,[SP, #+8]
+    179              usart_clk_init.USART_LastBit         = USART_LastBit_Disable;
+   \   00000038   0x2000             MOVS     R0,#+0
+   \   0000003A   0xF8AD 0x000A      STRH     R0,[SP, #+10]
+    180          
+    181          
+    182          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_1)
+    183              BSP_PeriphEn(BSP_PERIPH_ID_USART1);
+   \   0000003E   0x202E             MOVS     R0,#+46
+   \   00000040   0x.... 0x....      BL       BSP_PeriphEn
+    184          
+    185                                                                          /* ----------------- SETUP USART1 GPIO ---------------- */
+    186          #if (PROBE_RS232_UART_1_REMAP > 0)
+    187              BSP_PeriphEn(BSP_PERIPH_ID_IOPB);
+    188              BSP_PeriphEn(BSP_PERIPH_ID_IOPD);
+    189              BSP_PeriphEn(BSP_PERIPH_ID_AFIO);
+    190              GPIO_PinRemapConfig(GPIO_Remap_USART1, ENABLE);
+    191          
+    192                                                                          /* Configure GPIOB.6 as push-pull.                      */
+    193              gpio_init.GPIO_Pin   = GPIO_Pin_6;
+    194              gpio_init.GPIO_Speed = GPIO_Speed_50MHz;
+    195              gpio_init.GPIO_Mode  = GPIO_Mode_AF_PP;
+    196              GPIO_Init(GPIOB, &gpio_init);
+    197          
+    198                                                                          /* Configure GPIOB.7 as input floating.                 */
+    199              gpio_init.GPIO_Pin   = GPIO_Pin_7;
+    200              gpio_init.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+    201              GPIO_Init(GPIOB, &gpio_init);
+    202          #else
+    203              BSP_PeriphEn(BSP_PERIPH_ID_IOPA);
+   \   00000044   0x2022             MOVS     R0,#+34
+   \   00000046   0x.... 0x....      BL       BSP_PeriphEn
+    204          
+    205                                                                          /* Configure GPIOA.9 as push-pull.                      */
+    206              gpio_init.GPIO_Pin   = GPIO_Pin_9;
+   \   0000004A   0xF44F 0x7000      MOV      R0,#+512
+   \   0000004E   0xF8AD 0x0000      STRH     R0,[SP, #+0]
+    207              gpio_init.GPIO_Speed = GPIO_Speed_50MHz;
+   \   00000052   0x2003             MOVS     R0,#+3
+   \   00000054   0xF88D 0x0002      STRB     R0,[SP, #+2]
+    208              gpio_init.GPIO_Mode  = GPIO_Mode_AF_PP;
+   \   00000058   0x2018             MOVS     R0,#+24
+   \   0000005A   0xF88D 0x0003      STRB     R0,[SP, #+3]
+    209              GPIO_Init(GPIOA, &gpio_init);
+   \   0000005E   0xA900             ADD      R1,SP,#+0
+   \   00000060   0x....             LDR.N    R0,??DataTable6  ;; 0x40010800
+   \   00000062   0x.... 0x....      BL       GPIO_Init
+    210          
+    211                                                                          /* Configure GPIOA.10 as input floating.                */
+    212              gpio_init.GPIO_Pin   = GPIO_Pin_10;
+   \   00000066   0xF44F 0x6080      MOV      R0,#+1024
+   \   0000006A   0xF8AD 0x0000      STRH     R0,[SP, #+0]
+    213              gpio_init.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+   \   0000006E   0x2004             MOVS     R0,#+4
+   \   00000070   0xF88D 0x0003      STRB     R0,[SP, #+3]
+    214              GPIO_Init(GPIOA, &gpio_init);
+   \   00000074   0xA900             ADD      R1,SP,#+0
+   \   00000076   0x....             LDR.N    R0,??DataTable6  ;; 0x40010800
+   \   00000078   0x.... 0x....      BL       GPIO_Init
+    215          #endif
+    216          
+    217                                                                          /* ------------------ SETUP USART1 -------------------- */
+    218              USART_Init(USART1, &usart_init);
+   \   0000007C   0xA903             ADD      R1,SP,#+12
+   \   0000007E   0x....             LDR.N    R0,??DataTable6_1  ;; 0x40013800
+   \   00000080   0x.... 0x....      BL       USART_Init
+    219              USART_ClockInit(USART1, &usart_clk_init);
+   \   00000084   0xA901             ADD      R1,SP,#+4
+   \   00000086   0x....             LDR.N    R0,??DataTable6_1  ;; 0x40013800
+   \   00000088   0x.... 0x....      BL       USART_ClockInit
+    220              USART_Cmd(USART1, ENABLE);
+   \   0000008C   0x2101             MOVS     R1,#+1
+   \   0000008E   0x....             LDR.N    R0,??DataTable6_1  ;; 0x40013800
+   \   00000090   0x.... 0x....      BL       USART_Cmd
+    221          
+    222              BSP_IntVectSet(BSP_INT_ID_USART1, ProbeRS232_RxTxISRHandler);
+   \   00000094   0x.... 0x....      ADR.W    R1,ProbeRS232_RxTxISRHandler
+   \   00000098   0x2025             MOVS     R0,#+37
+   \   0000009A   0x.... 0x....      BL       BSP_IntVectSet
+    223              BSP_IntEn(BSP_INT_ID_USART1);
+   \   0000009E   0x2025             MOVS     R0,#+37
+   \   000000A0   0x.... 0x....      BL       BSP_IntEn
+    224          #endif
+    225          
+    226          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_2)
+    227              BSP_PeriphEn(BSP_PERIPH_ID_USART2);
+    228          
+    229                                                                          /* ----------------- SETUP USART2 GPIO ---------------- */
+    230          #if (PROBE_RS232_UART_2_REMAP > 0)
+    231              BSP_PeriphEn(BSP_PERIPH_ID_IOPD);
+    232              BSP_PeriphEn(BSP_PERIPH_ID_AFIO);
+    233              GPIO_PinRemapConfig(GPIO_Remap_USART2, ENABLE);
+    234          
+    235                                                                          /* Configure GPIOD.5 as push-pull.                      */
+    236              gpio_init.GPIO_Pin   = GPIO_Pin_5;
+    237              gpio_init.GPIO_Speed = GPIO_Speed_50MHz;
+    238              gpio_init.GPIO_Mode  = GPIO_Mode_AF_PP;
+    239              GPIO_Init(GPIOD, &gpio_init);
+    240          
+    241                                                                          /* Configure GPIOD.6 as input floating.                 */
+    242              gpio_init.GPIO_Pin   = GPIO_Pin_6;
+    243              gpio_init.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+    244              GPIO_Init(GPIOD, &gpio_init);
+    245          #else
+    246              BSP_PeriphEn(BSP_PERIPH_ID_IOPA);
+    247          
+    248                                                                          /* Configure GPIOA.2 as push-pull.                      */
+    249              gpio_init.GPIO_Pin   = GPIO_Pin_2;
+    250              gpio_init.GPIO_Speed = GPIO_Speed_50MHz;
+    251              gpio_init.GPIO_Mode  = GPIO_Mode_AF_PP;
+    252              GPIO_Init(GPIOA, &gpio_init);
+    253          
+    254                                                                          /* Configure GPIOA.3 as input floating.                 */
+    255              gpio_init.GPIO_Pin   = GPIO_Pin_3;
+    256              gpio_init.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+    257              GPIO_Init(GPIOA, &gpio_init);
+    258          #endif
+    259          
+    260                                                                          /* ------------------ SETUP USART2 -------------------- */
+    261              USART_Init(USART2, &usart_init);
+    262              USART_ClockInit(USART2, &usart_clk_init);
+    263              USART_Cmd(USART2, ENABLE);
+    264          
+    265              BSP_IntVectSet(BSP_INT_ID_USART2, ProbeRS232_RxTxISRHandler);
+    266              BSP_IntEn(BSP_INT_ID_USART2);
+    267          #endif
+    268          
+    269          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_3)
+    270              BSP_PeriphEn(BSP_PERIPH_ID_USART3);
+    271          
+    272                                                                          /* ----------------- SETUP USART3 GPIO ---------------- */
+    273          #if (PROBE_RS232_UART_3_REMAP_PARTIAL > 0)
+    274              BSP_PeriphEn(BSP_PERIPH_ID_IOPC);
+    275              BSP_PeriphEn(BSP_PERIPH_ID_AFIO);
+    276              GPIO_PinRemapConfig(GPIO_PartialRemap_USART3, ENABLE);
+    277          
+    278                                                                          /* Configure GPIOC.10 as push-pull.                     */
+    279              gpio_init.GPIO_Pin   = GPIO_Pin_10;
+    280              gpio_init.GPIO_Speed = GPIO_Speed_50MHz;
+    281              gpio_init.GPIO_Mode  = GPIO_Mode_AF_PP;
+    282              GPIO_Init(GPIOC, &gpio_init);
+    283          
+    284                                                                          /* Configure GPIOC.11 as input floating.                */
+    285              gpio_init.GPIO_Pin   = GPIO_Pin_11;
+    286              gpio_init.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+    287              GPIO_Init(GPIOC, &gpio_init);
+    288          
+    289          #elif (PROBE_RS232_UART_3_REMAP_FULL > 0)
+    290              BSP_PeriphEn(BSP_PERIPH_ID_IOPD);
+    291              BSP_PeriphEn(BSP_PERIPH_ID_AFIO);
+    292              GPIO_PinRemapConfig(GPIO_FullRemap_USART3, ENABLE);
+    293          
+    294                                                                          /* Configure GPIOD.8 as push-pull.                      */
+    295              gpio_init.GPIO_Pin   = GPIO_Pin_8;
+    296              gpio_init.GPIO_Speed = GPIO_Speed_50MHz;
+    297              gpio_init.GPIO_Mode  = GPIO_Mode_AF_PP;
+    298              GPIO_Init(GPIOD, &gpio_init);
+    299          
+    300                                                                          /* Configure GPIOD.9 as input floating.                 */
+    301              gpio_init.GPIO_Pin   = GPIO_Pin_9;
+    302              gpio_init.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+    303              GPIO_Init(GPIOD, &gpio_init);
+    304          
+    305          #else
+    306              BSP_PeriphEn(BSP_PERIPH_ID_IOPB);
+    307          
+    308                                                                          /* Configure GPIOB.10 as push-pull.                     */
+    309              gpio_init.GPIO_Pin   = GPIO_Pin_10;
+    310              gpio_init.GPIO_Speed = GPIO_Speed_50MHz;
+    311              gpio_init.GPIO_Mode  = GPIO_Mode_AF_PP;
+    312              GPIO_Init(GPIOB, &gpio_init);
+    313          
+    314                                                                          /* Configure GPIOB.11 as input floating.                */
+    315              gpio_init.GPIO_Pin   = GPIO_Pin_11;
+    316              gpio_init.GPIO_Mode  = GPIO_Mode_IN_FLOATING;
+    317              GPIO_Init(GPIOB, &gpio_init);
+    318          #endif
+    319          
+    320                                                                          /* ------------------ SETUP USART3 -------------------- */
+    321              USART_Init(USART3, &usart_init);
+    322              USART_ClockInit(USART3, &usart_clk_init);
+    323              USART_Cmd(USART3, ENABLE);
+    324          
+    325              BSP_IntVectSet(BSP_INT_ID_USART3, ProbeRS232_RxTxISRHandler);
+    326              BSP_IntEn(BSP_INT_ID_USART3);
+    327          #endif
+    328          }
+   \   000000A4   0xB007             ADD      SP,SP,#+28
+   \   000000A6   0xBD00             POP      {PC}             ;; return
+    329          
+    330          
+    331          /*
+    332          *********************************************************************************************************
+    333          *                                     ProbeRS232_RxTxISRHandler()
+    334          *
+    335          * Description : Handle Rx and Tx interrupts.
+    336          *
+    337          * Argument(s) : none.
+    338          *
+    339          * Return(s)   : none.
+    340          *
+    341          * Caller(s)   : This is an ISR.
+    342          *
+    343          * Note(s)     : (1) If this port is used in an RTOS, the interrupt entrance/exit procedure should be
+    344          *                   performed by the ISR that calls this handler.
+    345          *********************************************************************************************************
+    346          */
+    347          
+
+   \                                 In section .text, align 4, keep-with-next
+    348          void  ProbeRS232_RxTxISRHandler (void)
+    349          {
+   \                     ProbeRS232_RxTxISRHandler:
+   \   00000000   0xB510             PUSH     {R4,LR}
+    350              USART_TypeDef  *usart;
+    351              CPU_INT08U      rx_data;
+    352          
+    353          
+    354          #if   (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_1)
+    355              usart = USART1;
+   \   00000002   0x....             LDR.N    R4,??DataTable6_1  ;; 0x40013800
+    356          #elif (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_2)
+    357              usart = USART2;
+    358          #elif (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_3)
+    359              usart = USART3;
+    360          #else
+    361              return;
+    362          #endif
+    363          
+    364              if (USART_GetITStatus(usart, USART_IT_RXNE) != RESET) {
+   \   00000004   0xF240 0x5125      MOVW     R1,#+1317
+   \   00000008   0x0020             MOVS     R0,R4
+   \   0000000A   0x.... 0x....      BL       USART_GetITStatus
+   \   0000000E   0x2800             CMP      R0,#+0
+   \   00000010   0xD00A             BEQ.N    ??ProbeRS232_RxTxISRHandler_0
+    365                  rx_data = USART_ReceiveData(usart) & 0xFF;              /* Read one byte from the receive data register.        */
+   \   00000012   0x0020             MOVS     R0,R4
+   \   00000014   0x.... 0x....      BL       USART_ReceiveData
+    366                  ProbeRS232_RxHandler(rx_data);
+   \   00000018   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   0000001A   0x.... 0x....      BL       ProbeRS232_RxHandler
+    367                  USART_ClearITPendingBit(usart, USART_IT_RXNE);          /* Clear the USART1 receive interrupt.                  */
+   \   0000001E   0xF240 0x5125      MOVW     R1,#+1317
+   \   00000022   0x0020             MOVS     R0,R4
+   \   00000024   0x.... 0x....      BL       USART_ClearITPendingBit
+    368              }
+    369          
+    370              if (USART_GetITStatus(usart, USART_IT_TXE) != RESET) {
+   \                     ??ProbeRS232_RxTxISRHandler_0:
+   \   00000028   0xF240 0x7127      MOVW     R1,#+1831
+   \   0000002C   0x0020             MOVS     R0,R4
+   \   0000002E   0x.... 0x....      BL       USART_GetITStatus
+   \   00000032   0x2800             CMP      R0,#+0
+   \   00000034   0xD006             BEQ.N    ??ProbeRS232_RxTxISRHandler_1
+    371                  ProbeRS232_TxHandler();
+   \   00000036   0x.... 0x....      BL       ProbeRS232_TxHandler
+    372                  USART_ClearITPendingBit(usart, USART_IT_TXE);           /* Clear the USART1 transmit interrupt.                 */
+   \   0000003A   0xF240 0x7127      MOVW     R1,#+1831
+   \   0000003E   0x0020             MOVS     R0,R4
+   \   00000040   0x.... 0x....      BL       USART_ClearITPendingBit
+    373              }
+    374          }
+   \                     ??ProbeRS232_RxTxISRHandler_1:
+   \   00000044   0xBD10             POP      {R4,PC}          ;; return
+    375          
+    376          /*
+    377          *********************************************************************************************************
+    378          *                                      ProbeRS232_RxISRHandler()
+    379          *
+    380          * Description : Handle Rx interrupts.
+    381          *
+    382          * Argument(s) : none.
+    383          *
+    384          * Return(s)   : none.
+    385          *
+    386          * Caller(s)   : This is an ISR.
+    387          *
+    388          * Note(s)     : (1) This function is empty because receive interrupts are handled by ProbeRS232_RxTxISRHandler().
+    389          *********************************************************************************************************
+    390          */
+    391          
+
+   \                                 In section .text, align 2, keep-with-next
+    392          void  ProbeRS232_RxISRHandler (void)
+    393          {
+    394          }
+   \                     ProbeRS232_RxISRHandler:
+   \   00000000   0x4770             BX       LR               ;; return
+    395          
+    396          
+    397          /*
+    398          *********************************************************************************************************
+    399          *                                        ProbeRS232_RxIntDis()
+    400          *
+    401          * Description : Disable Rx interrupts.
+    402          *
+    403          * Argument(s) : none.
+    404          *
+    405          * Return(s)   : none.
+    406          *
+    407          * Caller(s)   : Application.
+    408          *
+    409          * Note(s)     : (1) The application should call this function to stop communication.
+    410          *********************************************************************************************************
+    411          */
+    412          
+
+   \                                 In section .text, align 2, keep-with-next
+    413          void  ProbeRS232_RxIntDis (void)
+    414          {
+   \                     ProbeRS232_RxIntDis:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    415          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_1)
+    416              USART_ITConfig(USART1, USART_IT_RXNE, DISABLE);
+   \   00000002   0x2200             MOVS     R2,#+0
+   \   00000004   0xF240 0x5125      MOVW     R1,#+1317
+   \   00000008   0x....             LDR.N    R0,??DataTable6_1  ;; 0x40013800
+   \   0000000A   0x.... 0x....      BL       USART_ITConfig
+    417          #endif
+    418          
+    419          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_2)
+    420              USART_ITConfig(USART2, USART_IT_RXNE, DISABLE);
+    421          #endif
+    422          
+    423          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_3)
+    424              USART_ITConfig(USART3, USART_IT_RXNE, DISABLE);
+    425          #endif
+    426          }
+   \   0000000E   0xBD01             POP      {R0,PC}          ;; return
+    427          
+    428          
+    429          /*
+    430          *********************************************************************************************************
+    431          *                                        ProbeRS232_RxIntEn()
+    432          *
+    433          * Description : Enable Rx interrupts.
+    434          *
+    435          * Argument(s) : none.
+    436          *
+    437          * Return(s)   : none.
+    438          *
+    439          * Caller(s)   : Application.
+    440          *
+    441          * Note(s)     : (1) The application should call this function to start communication.
+    442          *********************************************************************************************************
+    443          */
+    444          
+
+   \                                 In section .text, align 2, keep-with-next
+    445          void  ProbeRS232_RxIntEn (void)
+    446          {
+   \                     ProbeRS232_RxIntEn:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    447          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_1)
+    448              USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);
+   \   00000002   0x2201             MOVS     R2,#+1
+   \   00000004   0xF240 0x5125      MOVW     R1,#+1317
+   \   00000008   0x....             LDR.N    R0,??DataTable6_1  ;; 0x40013800
+   \   0000000A   0x.... 0x....      BL       USART_ITConfig
+    449          #endif
+    450          
+    451          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_2)
+    452              USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
+    453          #endif
+    454          
+    455          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_3)
+    456              USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);
+    457          #endif
+    458          }
+   \   0000000E   0xBD01             POP      {R0,PC}          ;; return
+    459          
+    460          
+    461          /*
+    462          *********************************************************************************************************
+    463          *                                      ProbeRS232_TxISRHandler()
+    464          *
+    465          * Description : Handle Tx interrupts.
+    466          *
+    467          * Argument(s) : none.
+    468          *
+    469          * Return(s)   : none.
+    470          *
+    471          * Caller(s)   : This is an ISR.
+    472          *
+    473          * Note(s)     : This function is empty because transmit interrupts are handled by ProbeRS232_RxTxISRHandler().
+    474          *********************************************************************************************************
+    475          */
+    476          
+
+   \                                 In section .text, align 2, keep-with-next
+    477          void  ProbeRS232_TxISRHandler (void)
+    478          {
+    479          }
+   \                     ProbeRS232_TxISRHandler:
+   \   00000000   0x4770             BX       LR               ;; return
+    480          
+    481          
+    482          /*
+    483          *********************************************************************************************************
+    484          *                                          ProbeRS232_Tx1()
+    485          *
+    486          * Description : Transmit one byte.
+    487          *
+    488          * Argument(s) : c           The byte to transmit.
+    489          *
+    490          * Return(s)   : none.
+    491          *
+    492          * Caller(s)   : ProbeRS232_TxHandler().
+    493          *
+    494          * Note(s)     : none.
+    495          *********************************************************************************************************
+    496          */
+    497          
+
+   \                                 In section .text, align 2, keep-with-next
+    498          void  ProbeRS232_Tx1 (CPU_INT08U c)
+    499          {
+   \                     ProbeRS232_Tx1:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    500          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_1)
+    501              USART_SendData(USART1, c);
+   \   00000002   0xB2C0             UXTB     R0,R0            ;; ZeroExt  R0,R0,#+24,#+24
+   \   00000004   0x0001             MOVS     R1,R0
+   \   00000006   0xB289             UXTH     R1,R1            ;; ZeroExt  R1,R1,#+16,#+16
+   \   00000008   0x....             LDR.N    R0,??DataTable6_1  ;; 0x40013800
+   \   0000000A   0x.... 0x....      BL       USART_SendData
+    502          #endif
+    503          
+    504          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_2)
+    505              USART_SendData(USART2, c);
+    506          #endif
+    507          
+    508          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_3)
+    509              USART_SendData(USART3, c);
+    510          #endif
+    511          }
+   \   0000000E   0xBD01             POP      {R0,PC}          ;; return
+    512          
+    513          
+    514          /*
+    515          *********************************************************************************************************
+    516          *                                        ProbeRS232_TxIntDis()
+    517          *
+    518          * Description : Disable Tx interrupts.
+    519          *
+    520          * Argument(s) : none.
+    521          *
+    522          * Return(s)   : none.
+    523          *
+    524          * Caller(s)   : ProbeRS232_TxHandler().
+    525          *
+    526          * Note(s)     : none.
+    527          *********************************************************************************************************
+    528          */
+    529          
+
+   \                                 In section .text, align 2, keep-with-next
+    530          void  ProbeRS232_TxIntDis (void)
+    531          {
+   \                     ProbeRS232_TxIntDis:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    532          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_1)
+    533              USART_ITConfig(USART1, USART_IT_TXE, DISABLE);
+   \   00000002   0x2200             MOVS     R2,#+0
+   \   00000004   0xF240 0x7127      MOVW     R1,#+1831
+   \   00000008   0x....             LDR.N    R0,??DataTable6_1  ;; 0x40013800
+   \   0000000A   0x.... 0x....      BL       USART_ITConfig
+    534          #endif
+    535          
+    536          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_2)
+    537              USART_ITConfig(USART2, USART_IT_TXE, DISABLE);
+    538          #endif
+    539          
+    540          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_3)
+    541              USART_ITConfig(USART3, USART_IT_TXE, DISABLE);
+    542          #endif
+    543          }
+   \   0000000E   0xBD01             POP      {R0,PC}          ;; return
+    544          
+    545          /*
+    546          *********************************************************************************************************
+    547          *                                        ProbeRS232_TxIntEn()
+    548          *
+    549          * Description : Enable Tx interrupts.
+    550          *
+    551          * Argument(s) : none.
+    552          *
+    553          * Return(s)   : none.
+    554          *
+    555          * Caller(s)   : ProbeRS232_TxStart().
+    556          *
+    557          * Note(s)     : none.
+    558          *********************************************************************************************************
+    559          */
+    560          
+
+   \                                 In section .text, align 2, keep-with-next
+    561          void  ProbeRS232_TxIntEn (void)
+    562          {
+   \                     ProbeRS232_TxIntEn:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    563          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_1)
+    564              USART_ITConfig(USART1, USART_IT_TXE, ENABLE);
+   \   00000002   0x2201             MOVS     R2,#+1
+   \   00000004   0xF240 0x7127      MOVW     R1,#+1831
+   \   00000008   0x....             LDR.N    R0,??DataTable6_1  ;; 0x40013800
+   \   0000000A   0x.... 0x....      BL       USART_ITConfig
+    565          #endif
+    566          
+    567          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_2)
+    568              USART_ITConfig(USART2, USART_IT_TXE, ENABLE);
+    569          #endif
+    570          
+    571          #if (PROBE_RS232_CFG_COMM_SEL == PROBE_RS232_UART_3)
+    572              USART_ITConfig(USART3, USART_IT_TXE, ENABLE);
+    573          #endif
+    574          }
+   \   0000000E   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6:
+   \   00000000   0x40010800         DC32     0x40010800
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable6_1:
+   \   00000000   0x40013800         DC32     0x40013800
+    575          
+    576          
+    577          /*
+    578          *********************************************************************************************************
+    579          *                                              ENABLE END
+    580          *
+    581          * Note(s) : See 'ENABLE  Note #1'.
+    582          *********************************************************************************************************
+    583          */
+    584          
+    585          #endif
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      32   ProbeRS232_InitTarget
+        32   -> BSP_IntEn
+        32   -> BSP_IntVectSet
+        32   -> BSP_PeriphEn
+        32   -> GPIO_Init
+        32   -> USART_ClockInit
+        32   -> USART_Cmd
+        32   -> USART_Init
+       0   ProbeRS232_RxISRHandler
+       8   ProbeRS232_RxIntDis
+         8   -> USART_ITConfig
+       8   ProbeRS232_RxIntEn
+         8   -> USART_ITConfig
+       8   ProbeRS232_RxTxISRHandler
+         8   -> ProbeRS232_RxHandler
+         8   -> ProbeRS232_TxHandler
+         8   -> USART_ClearITPendingBit
+         8   -> USART_GetITStatus
+         8   -> USART_ReceiveData
+       8   ProbeRS232_Tx1
+         8   -> USART_SendData
+       0   ProbeRS232_TxISRHandler
+       8   ProbeRS232_TxIntDis
+         8   -> USART_ITConfig
+       8   ProbeRS232_TxIntEn
+         8   -> USART_ITConfig
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  ??DataTable6
+       4  ??DataTable6_1
+     168  ProbeRS232_InitTarget
+       2  ProbeRS232_RxISRHandler
+      16  ProbeRS232_RxIntDis
+      16  ProbeRS232_RxIntEn
+      70  ProbeRS232_RxTxISRHandler
+      16  ProbeRS232_Tx1
+       2  ProbeRS232_TxISRHandler
+      16  ProbeRS232_TxIntDis
+      16  ProbeRS232_TxIntEn
+
+ 
+ 330 bytes in section .text
+ 
+ 330 bytes of CODE memory
+
+Errors: none
+Warnings: none

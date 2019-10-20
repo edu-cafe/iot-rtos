@@ -1,0 +1,482 @@
+###############################################################################
+#                                                                             #
+# IAR ANSI C/C++ Compiler V6.50.3.4676/W32 for ARM      11/Mar/2013  20:18:53 #
+# Copyright 1999-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Cpu mode     =  thumb                                                    #
+#    Endian       =  little                                                   #
+#    Source file  =  C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communicatio #
+#                    n\Generic\RS-232\OS\uCOS-II\probe_rs232_os.c             #
+#    Command line =  C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communicatio #
+#                    n\Generic\RS-232\OS\uCOS-II\probe_rs232_os.c -lCN        #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\List\ -o C:\BookSrc_CM3_IAR\Software\EvalB #
+#                    oards\ST\MANGO-Z1\IAR\OS-Probe\Flash\Obj\ --no_cse       #
+#                    --no_unroll --no_inline --no_code_motion --no_tbaa       #
+#                    --no_clustering --no_scheduling --debug --endian=little  #
+#                    --cpu=Cortex-M3 -e --fpu=None --dlib_config "C:\Program  #
+#                    Files\IAR Systems\Embedded Workbench                     #
+#                    6.5\arm\INC\c\DLib_Config_Normal.h" -I                   #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MA #
+#                    NGO-Z1\IAR\OS-Probe\..\BSP\ -I                           #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\CPU\ST\STM32\inc\ -I              #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-CPU\ -I                        #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-CPU\ARM-Cortex-M3\IAR\ -I      #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-LCD\Source\ -I                 #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-LIB\ -I                        #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uCOS-II\Ports\ARM-Cortex-M3\Gener #
+#                    ic\IAR\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MAN #
+#                    GO-Z1\IAR\OS-Probe\..\..\..\..\..\uCOS-II\Source\ -I     #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-Probe\Target\Communication\Gen #
+#                    eric\RS-232\Source\ -I C:\BookSrc_CM3_IAR\Software\EvalB #
+#                    oards\ST\MANGO-Z1\IAR\OS-Probe\..\..\..\..\..\uC-Probe\T #
+#                    arget\Communication\Generic\RS-232\Ports\ST\STM32\ -I    #
+#                    C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\..\..\..\..\..\uC-Probe\Target\Communication\Gen #
+#                    eric\Source\ -I C:\BookSrc_CM3_IAR\Software\EvalBoards\S #
+#                    T\MANGO-Z1\IAR\OS-Probe\..\..\..\..\..\uC-Probe\Target\P #
+#                    lugins\uCOS-II\ -Ol --use_c++_inline                     #
+#    List file    =  C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\List\probe_rs232_os.lst                    #
+#    Object file  =  C:\BookSrc_CM3_IAR\Software\EvalBoards\ST\MANGO-Z1\IAR\O #
+#                    S-Probe\Flash\Obj\probe_rs232_os.o                       #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+C:\BookSrc_CM3_IAR\Software\uC-Probe\Target\Communication\Generic\RS-232\OS\uCOS-II\probe_rs232_os.c
+      1          /*
+      2          *********************************************************************************************************
+      3          *                                       uC/Probe Communication
+      4          *
+      5          *                         (c) Copyright 2007-2008; Micrium, Inc.; Weston, FL
+      6          *
+      7          *               All rights reserved.  Protected by international copyright laws.
+      8          *               Knowledge of the source code may NOT be used to develop a similar product.
+      9          *               Please help us continue to provide the Embedded community with the finest
+     10          *               software available.  Your honesty is greatly appreciated.
+     11          *********************************************************************************************************
+     12          */
+     13          
+     14          /*
+     15          *********************************************************************************************************
+     16          *
+     17          *                                        COMMUNICATION: RS-232
+     18          *                                        Micrium uC/OS-II PORT
+     19          *
+     20          * Filename      : probe_rs232_os.c
+     21          * Version       : V2.20
+     22          * Programmer(s) : BAN
+     23          *********************************************************************************************************
+     24          * Note(s)       : (1) This file is the uC/OS-II layer for the uC/Probe RS-232 Communication Module.
+     25          *********************************************************************************************************
+     26          */
+     27          
+     28          
+     29          /*
+     30          *********************************************************************************************************
+     31          *                                            INCLUDE FILES
+     32          *********************************************************************************************************
+     33          */
+     34          
+     35          #include  <probe_com.h>
+     36          #include  <probe_rs232.h>
+     37          #include  <ucos_ii.h>
+     38          
+     39          
+     40          /*
+     41          *********************************************************************************************************
+     42          *                                               ENABLE
+     43          *
+     44          * Note(s) : (1) See 'probe_rs232.h  ENABLE'.
+     45          *********************************************************************************************************
+     46          */
+     47          
+     48          #if (PROBE_COM_CFG_RS232_EN == DEF_ENABLED)                     /* See Note #1.                                         */
+     49          
+     50          
+     51          /*
+     52          *********************************************************************************************************
+     53          *                                            LOCAL DEFINES
+     54          *********************************************************************************************************
+     55          */
+     56          
+     57          
+     58          /*
+     59          *********************************************************************************************************
+     60          *                                           LOCAL CONSTANTS
+     61          *********************************************************************************************************
+     62          */
+     63          
+     64          
+     65          /*
+     66          *********************************************************************************************************
+     67          *                                          LOCAL DATA TYPES
+     68          *********************************************************************************************************
+     69          */
+     70          
+     71          
+     72          /*
+     73          *********************************************************************************************************
+     74          *                                            LOCAL TABLES
+     75          *********************************************************************************************************
+     76          */
+     77          
+     78          
+     79          /*
+     80          *********************************************************************************************************
+     81          *                                       LOCAL GLOBAL VARIABLES
+     82          *********************************************************************************************************
+     83          */
+     84          
+     85          #if (PROBE_RS232_CFG_PARSE_TASK_EN == DEF_ENABLED)
+
+   \                                 In section .bss, align 4
+     86          static  OS_STK     ProbeRS232_OS_TaskStk[PROBE_RS232_CFG_TASK_STK_SIZE];/* Probe RS-232 task stack.                         */
+   \                     ProbeRS232_OS_TaskStk:
+   \   00000000                      DS8 512
+     87          
+     88          #if (OS_SEM_EN > 0)
+
+   \                                 In section .bss, align 4
+     89          static  OS_EVENT  *ProbeRS232_OS_Sem;                                   /* Packet receive signal.                           */
+   \                     ProbeRS232_OS_Sem:
+   \   00000000                      DS8 4
+     90          #endif
+     91          
+     92          #endif
+     93          
+     94          
+     95          /*
+     96          *********************************************************************************************************
+     97          *                                      LOCAL FUNCTION PROTOTYPES
+     98          *********************************************************************************************************
+     99          */
+    100          
+    101          #if (PROBE_RS232_CFG_PARSE_TASK_EN == DEF_ENABLED)
+    102          static  void  ProbeRS232_OS_Task(void *p_arg);                          /* Probe RS-232 task.                               */
+    103          #endif
+    104          
+    105          
+    106          /*
+    107          *********************************************************************************************************
+    108          *                                     LOCAL CONFIGURATION ERRORS
+    109          *********************************************************************************************************
+    110          */
+    111          
+    112          #if (PROBE_RS232_CFG_PARSE_TASK_EN == DEF_ENABLED) && (OS_SEM_EN == 0)
+    113          #error  "If PROBE_RS232_PARSE_TASK is set to DEF_TRUE, then semaphores MUST be enabled."
+    114          #endif
+    115          
+    116          
+    117          /*
+    118          *********************************************************************************************************
+    119          *                                         ProbeRS232_OS_Init()
+    120          *
+    121          * Description : Create RTOS objects for RS-232 communication.
+    122          *
+    123          * Argument(s) : none.
+    124          *
+    125          * Return(s)   : none.
+    126          *
+    127          * Caller(s)   : ProbeRS232_Init().
+    128          *
+    129          * Note(s)     : none.
+    130          *********************************************************************************************************
+    131          */
+    132          
+    133          #if (PROBE_RS232_CFG_PARSE_TASK_EN == DEF_ENABLED)
+
+   \                                 In section .text, align 2, keep-with-next
+    134          void  ProbeRS232_OS_Init (void)
+    135          {
+   \                     ProbeRS232_OS_Init:
+   \   00000000   0xB500             PUSH     {LR}
+   \   00000002   0xB087             SUB      SP,SP,#+28
+    136              CPU_INT08U  err;
+    137          
+    138          
+    139          #if (OS_SEM_EN > 0)
+    140              ProbeRS232_OS_Sem = OSSemCreate(0);
+   \   00000004   0x2000             MOVS     R0,#+0
+   \   00000006   0x.... 0x....      BL       OSSemCreate
+   \   0000000A   0x....             LDR.N    R1,??DataTable2
+   \   0000000C   0x6008             STR      R0,[R1, #+0]
+    141          #if   (OS_EVENT_NAME_SIZE > 16)
+    142              OSEventNameSet(ProbeRS232_OS_Sem, (CPU_INT08U *)"uC/Probe RS-232", &err);
+    143          #elif (OS_EVENT_NAME_SIZE > 13)
+    144              OSEventNameSet(ProbeRS232_OS_Sem, (CPU_INT08U *)"Probe RS-232", &err);
+   \   0000000E   0xAA05             ADD      R2,SP,#+20
+   \   00000010   0x....             LDR.N    R1,??DataTable2_1
+   \   00000012   0x....             LDR.N    R0,??DataTable2
+   \   00000014   0x6800             LDR      R0,[R0, #+0]
+   \   00000016   0x.... 0x....      BL       OSEventNameSet
+    145          #endif
+    146          #endif
+    147          
+    148          #if (OS_TASK_CREATE_EXT_EN > 0)
+    149              #if (OS_STK_GROWTH == 1)
+    150              err = OSTaskCreateExt( ProbeRS232_OS_Task,
+    151                                     (void *)0,
+    152                                    &ProbeRS232_OS_TaskStk[PROBE_RS232_CFG_TASK_STK_SIZE - 1],/* Set Top-Of-Stack.                    */
+    153                                     PROBE_RS232_CFG_TASK_PRIO,
+    154                                     PROBE_RS232_CFG_TASK_PRIO,
+    155                                    &ProbeRS232_OS_TaskStk[0],                                /* Set Bottom-Of-Stack.                 */
+    156                                     PROBE_RS232_CFG_TASK_STK_SIZE,
+    157                                     (void *)0,                                               /* No TCB extension.                    */
+    158                                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR);              /* Enable stack checking + clear stack. */
+   \   0000001A   0x2003             MOVS     R0,#+3
+   \   0000001C   0x9004             STR      R0,[SP, #+16]
+   \   0000001E   0x2000             MOVS     R0,#+0
+   \   00000020   0x9003             STR      R0,[SP, #+12]
+   \   00000022   0x2080             MOVS     R0,#+128
+   \   00000024   0x9002             STR      R0,[SP, #+8]
+   \   00000026   0x....             LDR.N    R0,??DataTable2_2
+   \   00000028   0x9001             STR      R0,[SP, #+4]
+   \   0000002A   0x2006             MOVS     R0,#+6
+   \   0000002C   0x9000             STR      R0,[SP, #+0]
+   \   0000002E   0x2306             MOVS     R3,#+6
+   \   00000030   0x....             LDR.N    R2,??DataTable2_3
+   \   00000032   0x2100             MOVS     R1,#+0
+   \   00000034   0x.... 0x....      ADR.W    R0,ProbeRS232_OS_Task
+   \   00000038   0x.... 0x....      BL       OSTaskCreateExt
+   \   0000003C   0xF88D 0x0014      STRB     R0,[SP, #+20]
+    159              #else
+    160              err = OSTaskCreateExt( ProbeRS232_OS_Task,
+    161                                     (void *)0,
+    162                                    &ProbeRS232_OS_TaskStk[0],                                /* Set Top-Of-Stack.                    */
+    163                                     PROBE_RS232_CFG_TASK_PRIO,
+    164                                     PROBE_RS232_CFG_TASK_PRIO,
+    165                                    &ProbeRS232_OS_TaskStk[PROBE_RS232_CFG_TASK_STK_SIZE - 1],/* Set Bottom-Of-Stack.                 */
+    166                                     PROBE_RS232_TASK_CFG_STK_SIZE,
+    167                                     (void *)0,                                               /* No TCB extension.                    */
+    168                                     OS_TASK_OPT_STK_CHK | OS_TASK_OPT_STK_CLR);              /* Enable stack checking + clear stack. */
+    169              #endif
+    170          #else
+    171              #if (OS_STK_GROWTH == 1)
+    172              err = OSTaskCreate( ProbeRS232_OS_Task,
+    173                                  (void *)0,
+    174                                 &ProbeRS232_OS_TaskStk[PROBE_RS232_CFG_TASK_STK_SIZE - 1],
+    175                                  PROBE_RS232_CFG_TASK_PRIO);
+    176              #else
+    177              err = OSTaskCreate( ProbeRS232_OS_Task,
+    178                                  (void *)0,
+    179                                 &ProbeRS232_OS_TaskStk[0],
+    180                                  PROBE_RS232_CFG_TASK_PRIO);
+    181              #endif
+    182          #endif
+    183          
+    184          #if   (OS_TASK_NAME_SIZE > 13)
+    185              OSTaskNameSet(PROBE_RS232_CFG_TASK_PRIO, (CPU_INT08U *)"Probe RS-232", &err);
+   \   00000040   0xAA05             ADD      R2,SP,#+20
+   \   00000042   0x....             LDR.N    R1,??DataTable2_1
+   \   00000044   0x2006             MOVS     R0,#+6
+   \   00000046   0x.... 0x....      BL       OSTaskNameSet
+    186          #endif
+    187          }
+   \   0000004A   0xB007             ADD      SP,SP,#+28
+   \   0000004C   0xBD00             POP      {PC}             ;; return
+    188          #endif
+    189          
+    190          
+    191          /*
+    192          *********************************************************************************************************
+    193          *                                       ProbeRS232_OS_Pend()
+    194          *
+    195          * Description : Wait for a packet to be received.
+    196          *
+    197          * Argument(s) : none.
+    198          *
+    199          * Return(s)   : none.
+    200          *
+    201          * Caller(s)   : ProbeRS232_Task().
+    202          *
+    203          * Note(s)     : none.
+    204          *********************************************************************************************************
+    205          */
+    206          
+    207          #if (PROBE_RS232_CFG_PARSE_TASK_EN == DEF_ENABLED)
+
+   \                                 In section .text, align 2, keep-with-next
+    208          void  ProbeRS232_OS_Pend (void)
+    209          {
+   \                     ProbeRS232_OS_Pend:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    210          #if (OS_SEM_EN > 0)
+    211              CPU_INT08U  err;
+    212          
+    213          
+    214              OSSemPend(ProbeRS232_OS_Sem, 0, &err);                          /* Wait for a packet to be received                     */
+   \   00000002   0xAA00             ADD      R2,SP,#+0
+   \   00000004   0x2100             MOVS     R1,#+0
+   \   00000006   0x....             LDR.N    R0,??DataTable2
+   \   00000008   0x6800             LDR      R0,[R0, #+0]
+   \   0000000A   0x.... 0x....      BL       OSSemPend
+    215          #endif
+    216          }
+   \   0000000E   0xBD01             POP      {R0,PC}          ;; return
+    217          #endif
+    218          
+    219          
+    220          /*
+    221          *********************************************************************************************************
+    222          *                                       ProbeRS232_OS_Post()
+    223          *
+    224          * Description : Notify a pending task that a packet has been receieved.
+    225          *
+    226          * Argument(s) : none.
+    227          *
+    228          * Return(s)   : none.
+    229          *
+    230          * Caller(s)   : ProbeRS232_RxPkt().
+    231          *
+    232          * Note(s)     : none.
+    233          *********************************************************************************************************
+    234          */
+    235          
+    236          #if (PROBE_RS232_CFG_PARSE_TASK_EN == DEF_ENABLED)
+
+   \                                 In section .text, align 2, keep-with-next
+    237          void  ProbeRS232_OS_Post (void)
+    238          {
+   \                     ProbeRS232_OS_Post:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    239          #if (OS_SEM_EN > 0)
+    240              OSSemPost(ProbeRS232_OS_Sem);                                   /* A packet has been received                           */
+   \   00000002   0x....             LDR.N    R0,??DataTable2
+   \   00000004   0x6800             LDR      R0,[R0, #+0]
+   \   00000006   0x.... 0x....      BL       OSSemPost
+    241          #endif
+    242          }
+   \   0000000A   0xBD01             POP      {R0,PC}          ;; return
+    243          #endif
+    244          
+    245          
+    246          /*
+    247          *********************************************************************************************************
+    248          *********************************************************************************************************
+    249          *                                           LOCAL FUNCTIONS
+    250          *********************************************************************************************************
+    251          *********************************************************************************************************
+    252          */
+    253          
+    254          /*
+    255          *********************************************************************************************************
+    256          *                                         ProbeRS232_OS_Task()
+    257          *
+    258          * Description : Task which waits for packets to be received, formalates responses, and begins transmission.
+    259          *
+    260          * Argument(s) : p_arg       Argument passed to ProbeRS232_OS_Task() by 'OSTaskCreate()'.
+    261          *
+    262          * Return(s)   : none.
+    263          *
+    264          * Caller(s)   : This is a task.
+    265          *
+    266          * Note(s)     : none.
+    267          *********************************************************************************************************
+    268          */
+    269          
+    270          #if (PROBE_RS232_CFG_PARSE_TASK_EN == DEF_ENABLED)
+
+   \                                 In section .text, align 4, keep-with-next
+    271          static  void  ProbeRS232_OS_Task (void *p_arg)
+    272          {
+   \                     ProbeRS232_OS_Task:
+   \   00000000   0xB580             PUSH     {R7,LR}
+    273              ProbeRS232_Task(p_arg);
+   \   00000002   0x.... 0x....      BL       ProbeRS232_Task
+    274          }
+   \   00000006   0xBD01             POP      {R0,PC}          ;; return
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2:
+   \   00000000   0x........         DC32     ProbeRS232_OS_Sem
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_1:
+   \   00000000   0x........         DC32     `?<Constant "Probe RS-232">`
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_2:
+   \   00000000   0x........         DC32     ProbeRS232_OS_TaskStk
+
+   \                                 In section .text, align 4, keep-with-next
+   \                     ??DataTable2_3:
+   \   00000000   0x........         DC32     ProbeRS232_OS_TaskStk+0x1FC
+
+   \                                 In section .rodata, align 4
+   \                     `?<Constant "Probe RS-232">`:
+   \   00000000   0x50 0x72          DC8 "Probe RS-232"
+   \              0x6F 0x62    
+   \              0x65 0x20    
+   \              0x52 0x53    
+   \              0x2D 0x32    
+   \              0x33 0x32    
+   \              0x00         
+   \   0000000D   0x00 0x00          DC8 0, 0, 0
+   \              0x00         
+    275          #endif
+    276          
+    277          
+    278          /*
+    279          *********************************************************************************************************
+    280          *                                              ENABLE END
+    281          *
+    282          * Note(s) : See 'ENABLE  Note #1'.
+    283          *********************************************************************************************************
+    284          */
+    285          
+    286          #endif
+
+   Maximum stack usage in bytes:
+
+   .cstack Function
+   ------- --------
+      32   ProbeRS232_OS_Init
+        32   -> OSEventNameSet
+        32   -> OSSemCreate
+        32   -> OSTaskCreateExt
+        32   -> OSTaskNameSet
+       8   ProbeRS232_OS_Pend
+         8   -> OSSemPend
+       8   ProbeRS232_OS_Post
+         8   -> OSSemPost
+       8   ProbeRS232_OS_Task
+         8   -> ProbeRS232_Task
+
+
+   Section sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      16  ?<Constant "Probe RS-232">
+       4  ??DataTable2
+       4  ??DataTable2_1
+       4  ??DataTable2_2
+       4  ??DataTable2_3
+      78  ProbeRS232_OS_Init
+      16  ProbeRS232_OS_Pend
+      12  ProbeRS232_OS_Post
+       4  ProbeRS232_OS_Sem
+       8  ProbeRS232_OS_Task
+     512  ProbeRS232_OS_TaskStk
+
+ 
+ 516 bytes in section .bss
+  16 bytes in section .rodata
+ 130 bytes in section .text
+ 
+ 130 bytes of CODE  memory
+  16 bytes of CONST memory
+ 516 bytes of DATA  memory
+
+Errors: none
+Warnings: none

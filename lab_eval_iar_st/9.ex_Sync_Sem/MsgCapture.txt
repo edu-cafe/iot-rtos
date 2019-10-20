@@ -1,0 +1,276 @@
+
+main start!
+
+BSP_IntDisAll() done!
+
+OSInit() done!
+
+App_TaskStart() start!
+
+BSP_Init() done_1!
+
+OS_CPU_SysTickInit() done!
+
+Task1 Create(err:0)
+
+Task2 Create(err:0)
+
+Running Task :     5
+Cpu Usage :   0
+Context Switches per Sec :     5
+
+Task1:Event Waiting...
+
+Task2(1)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(1)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    23
+
+Task2(3)...
+
+===>Task1:Event Rx!!
+
+Task1:Event Waiting...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    25
+
+Task2(3)...
+
+===>Task1:Event Rx!!
+
+Task1:Event Waiting...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    26
+
+Task2(7)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(7)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(7)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(5)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(9)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(1)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(3)...
+
+===>Task1:Event Rx!!
+
+Task1:Event Waiting...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    26
+
+Task2(7)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(5)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(9)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(3)...
+
+===>Task1:Event Rx!!
+
+Task1:Event Waiting...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    26
+
+Task2(3)...
+
+===>Task1:Event Rx!!
+
+Task1:Event Waiting...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    26
+
+Task2(0)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(4)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(2)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(6)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(8)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(2)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(4)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(6)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(8)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(9)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(5)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(3)...
+
+===>Task1:Event Rx!!
+
+Task1:Event Waiting...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    26
+
+Task2(6)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(6)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(8)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(2)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(8)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(8)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(8)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(6)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(4)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(4)...
+
+Running Task :     5
+Cpu Usage :   1
+Context Switches per Sec :    24
+
+Task2(6)...

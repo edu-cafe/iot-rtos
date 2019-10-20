@@ -1,0 +1,305 @@
+
+main start!
+
+BSP_IntDisAll() done!
+
+OSInit() done!
+
+App_TaskStart() start!
+
+BSP_Init() done_1!
+
+OS_CPU_SysTickInit() done!
+
+Running Task :     6
+Cpu Usage :   0
+Context Switches per Sec :     5
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:0)...!!
+Task3:msgQ_Rx(data:0)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:500)...!!
+Task3:msgQ_Rx(data:500)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:501)...!!
+Task3:msgQ_Rx(data:501)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:1)...!!
+Task3:msgQ_Rx(data:1)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    37
+Task7_Start...!!
+Task7:msgQ_Tx(data:502)...!!
+Task3:msgQ_Rx(data:502)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:503)...!!
+Task3:msgQ_Rx(data:503)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:2)...!!
+Task3:msgQ_Rx(data:2)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task7_Start...!!
+Task7:msgQ_Tx(data:504)...!!
+Task3:msgQ_Rx(data:504)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:3)...!!
+Task3:msgQ_Rx(data:3)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:505)...!!
+Task3:msgQ_Rx(data:505)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task7_Start...!!
+Task7:msgQ_Tx(data:506)...!!
+Task3:msgQ_Rx(data:506)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:4)...!!
+Task3:msgQ_Rx(data:4)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:507)...!!
+Task3:msgQ_Rx(data:507)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task5_Start...!!
+Task5:msgQ_Tx(data:5)...!!
+Task3:msgQ_Rx(data:5)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:508)...!!
+Task3:msgQ_Rx(data:508)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:509)...!!
+Task3:msgQ_Rx(data:509)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:6)...!!
+Task3:msgQ_Rx(data:6)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    38
+Task7_Start...!!
+Task7:msgQ_Tx(data:510)...!!
+Task3:msgQ_Rx(data:510)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:511)...!!
+Task3:msgQ_Rx(data:511)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:7)...!!
+Task3:msgQ_Rx(data:7)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task7_Start...!!
+Task7:msgQ_Tx(data:512)...!!
+Task3:msgQ_Rx(data:512)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:8)...!!
+Task3:msgQ_Rx(data:8)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:513)...!!
+Task3:msgQ_Rx(data:513)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task7_Start...!!
+Task7:msgQ_Tx(data:514)...!!
+Task3:msgQ_Rx(data:514)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:9)...!!
+Task3:msgQ_Rx(data:9)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:515)...!!
+Task3:msgQ_Rx(data:515)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task5_Start...!!
+Task5:msgQ_Tx(data:10)...!!
+Task3:msgQ_Rx(data:10)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:516)...!!
+Task3:msgQ_Rx(data:516)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:517)...!!
+Task3:msgQ_Rx(data:517)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:11)...!!
+Task3:msgQ_Rx(data:11)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    38
+Task7_Start...!!
+Task7:msgQ_Tx(data:518)...!!
+Task3:msgQ_Rx(data:518)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:519)...!!
+Task3:msgQ_Rx(data:519)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:12)...!!
+Task3:msgQ_Rx(data:12)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task7_Start...!!
+Task7:msgQ_Tx(data:520)...!!
+Task3:msgQ_Rx(data:520)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:13)...!!
+Task3:msgQ_Rx(data:13)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:521)...!!
+Task3:msgQ_Rx(data:521)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task7_Start...!!
+Task7:msgQ_Tx(data:522)...!!
+Task3:msgQ_Rx(data:522)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:14)...!!
+Task3:msgQ_Rx(data:14)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:523)...!!
+Task3:msgQ_Rx(data:523)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task5_Start...!!
+Task5:msgQ_Tx(data:15)...!!
+Task3:msgQ_Rx(data:15)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:524)...!!
+Task3:msgQ_Rx(data:524)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:525)...!!
+Task3:msgQ_Rx(data:525)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:16)...!!
+Task3:msgQ_Rx(data:16)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    38
+Task7_Start...!!
+Task7:msgQ_Tx(data:526)...!!
+Task3:msgQ_Rx(data:526)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:527)...!!
+Task3:msgQ_Rx(data:527)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:17)...!!
+Task3:msgQ_Rx(data:17)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task7_Start...!!
+Task7:msgQ_Tx(data:528)...!!
+Task3:msgQ_Rx(data:528)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:18)...!!
+Task3:msgQ_Rx(data:18)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:529)...!!
+Task3:msgQ_Rx(data:529)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task7_Start...!!
+Task7:msgQ_Tx(data:530)...!!
+Task3:msgQ_Rx(data:530)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:19)...!!
+Task3:msgQ_Rx(data:19)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:531)...!!
+Task3:msgQ_Rx(data:531)...!!
+Task3_Start...!!
+
+Running Task :     6
+Cpu Usage :   1
+Context Switches per Sec :    34
+Task5_Start...!!
+Task5:msgQ_Tx(data:20)...!!
+Task3:msgQ_Rx(data:20)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:532)...!!
+Task3:msgQ_Rx(data:532)...!!
+Task3_Start...!!
+Task7_Start...!!
+Task7:msgQ_Tx(data:533)...!!
+Task3:msgQ_Rx(data:533)...!!
+Task3_Start...!!
+Task5_Start...!!
+Task5:msgQ_Tx(data:21)...!!
+Task3:msgQ_Rx(data:21)...!!
+Task3_Start...!!
